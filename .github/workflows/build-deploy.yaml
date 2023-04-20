@@ -2,7 +2,7 @@ name: Docker Build Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 env:
@@ -24,19 +24,12 @@ jobs:
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: Build user service docker image
-        run: docker build . --file Dockerfile -t "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
+        run: docker build . --file Dockerfile -t "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:virgo"
       - name: Push user service docker image
-        run: docker push "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
+        run: docker push "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:virgo"
 
- 
-# name: remote ssh command
-# on:
-#   # Triggers the workflow on push or pull request events but only for the master branch
-#   push:
-#     branches: [ main ]
-
-
-  build:
+  deployment:
+    needs: [create-user-image]
     name: Build
     runs-on: ubuntu-latest
     steps:
