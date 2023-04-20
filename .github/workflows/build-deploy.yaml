@@ -41,4 +41,4 @@ jobs:
         username: root
         password: dc^%876HA
         port: 22
-        script: docker pull flytoogoal/deployer_pb:virgo
+        script: docker login --username flytoogoal --password  dckr_pat_VPLjBClANak9aC43zIggQJLz6yY && docker pull flytoogoal/deployer_pb:virgo
