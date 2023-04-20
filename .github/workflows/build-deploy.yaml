@@ -8,7 +8,7 @@ on:
 env:
   DOCKER_USERNAME: flytoogoal
   DOCKER_PASSWORD: flytoogoal@gmail.com
-  PRODUCT_REPO_NAME: deployer
+  PRODUCT_REPO_NAME: deployer_pb
 
 jobs:
   create-user-image:
