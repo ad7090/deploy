@@ -34,17 +34,17 @@ jobs:
 #   # Triggers the workflow on push or pull request events but only for the master branch
 #   push:
 #     branches: [ main ]
-# jobs:
 
-#   build:
-#     name: Build
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: executing remote ssh commands using password
-#       uses: appleboy/ssh-action@v0.1.10
-#       with:
-#         host: 164.92.94.139
-#         username: root
-#         password: dc^%876HA
-#         port: 22
-#         script: whoami
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: 164.92.94.139
+        username: root
+        password: dc^%876HA
+        port: 22
+        script: docker pull flytoogoal/deployer:virgo
