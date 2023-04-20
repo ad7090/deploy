@@ -1,0 +1,47 @@
+name: Docker Build Deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+env:
+  DOCKER_USERNAME: flytoogoal
+  DOCKER_PASSWORD: flytoogoal@gmail.com
+  PRODUCT_REPO_NAME: DEPLOYER
+
+# jobs:
+#   create-user-image:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Work Dir
+#         run: |
+#           echo $DOCKER_USERNAME
+#           echo $DOCKER_PASSWORD
+#           echo $PRODUCT_REPO_NAME
+#       - name: Docker login
+#         run: |
+#           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+#       - name: Build user service docker image
+#         run: docker build . --file Dockerfile -t "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
+#       - name: Push user service docker image
+#         run: docker push "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
+
+  deployment:
+     build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - name: Deploy using ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: 164.92.94.139
+        username: root
+        key: dc^%876HA
+        port: 22
+        script: |
+          git clone https://github.com/ad7090/deploy.git
+          
