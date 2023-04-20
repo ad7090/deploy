@@ -46,6 +46,6 @@ jobs:
       with:
         host: 164.92.94.139
         username: root
-        key: dc^%876HA
+        password: dc^%876HA
         port: 22
         script: whoami
